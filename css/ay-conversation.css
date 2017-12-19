@@ -1,11 +1,11 @@
 @font-face {
   font-family: "ay-YellowPages-Regular";
-  src: url('../fonts/YellowPages-Regular.otf') format("opentype");
+  src: url('../fonts/YellowPages-Regular.otf?raw=true') format("opentype");
 }
 
 @font-face {
   font-family: "ay-YellowPages-Bold";
-  src: url('../fonts/YellowPages-Bold.otf') format("opentype");
+  src: url('../fonts/YellowPages-Bold.otf?raw=true') format("opentype");
 }
 
 @media (min-width: 1024px) {
