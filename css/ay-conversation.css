@@ -1,0 +1,584 @@
+@font-face {
+  font-family: "ay-YellowPages-Regular";
+  src: url('../fonts/YellowPages-Regular.otf') format("opentype");
+}
+
+@font-face {
+  font-family: "ay-YellowPages-Bold";
+  src: url('../fonts/YellowPages-Bold.otf') format("opentype");
+}
+
+@media (min-width: 1024px) {
+  .ay-search-clamp {
+    margin: 0 15px 15px;
+    font-family: "ay-YellowPages-Regular", Helvetica, Arial, serif;
+    color: rgba(0, 0, 0, 1.0);
+    line-height: 16.0px;
+  }
+}
+
+@media (min-width: 1270px) {
+  .ay-search-clamp {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-family: "ay-YellowPages-Regular", Helvetica, Arial, serif;
+    color: rgba(0, 0, 0, 1.0);
+    line-height: 16.0px;
+  }
+}
+
+.ay-conversation-history .ay-conversation .ay-more-info a:link {
+    font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+    color: rgba(73, 143, 225, 1.0);
+    text-decoration:none;
+}
+
+.ay-conversation-history .ay-conversation .ay-more-info a:visited {
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  color: rgba(73, 143, 225, 1.0);
+}
+
+.ay-conversation-history .ay-conversation .ay-more-info a:hover {
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  color: rgba(73, 143, 225, 1.0);
+}
+
+.ay-conversation-history .ay-conversation .ay-more-info a:active {
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  color: rgba(73, 143, 225, 1.0);
+}
+
+.ay-loading {
+  width: 80px;
+  height: 88.849px;
+
+  position:absolute; /*it can be fixed too*/
+  left:0; right:0;
+  top:0; bottom:0;
+  margin:auto;
+}
+
+.ay-search-clamp {
+  max-width: 1240px;
+  font-family: "ay-YellowPages-Regular", Helvetica, Arial, serif;
+  color: rgba(0, 0, 0, 1.0);
+  line-height: 16.0px;
+}
+
+.ay-messages {
+  padding: 15 0 15 15;
+}
+
+.ay-messages .ay-small-screen {
+  display: none;
+}
+.ay-messages .ay-header {
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-size: 36.0px;
+  text-align: left;
+  line-height: 34.0px;
+}
+
+.ay-messages .ay-sub-header {
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-size: 24.0px;
+  text-align: left;
+  line-height: 23.0px;
+  margin: 20 0 20 0;
+}
+
+.ay-active-conversation {
+  float: left;
+  width: 680px;
+  font-size: 16.0px;
+}
+
+.ay-active-conversation .ay-sub-headers .ay-sub-header.ay-my-message-history {
+  color: rgba(73, 143, 225, 1.0);
+}
+
+.ay-active-conversation .ay-bubbles-container-header {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: rgba(255, 255, 255, 1.0);
+  height: 20px;
+  width: 100%;
+}
+.ay-active-conversation .ay-bubbles-container-footer {
+  height: 30px;
+}
+.ay-active-conversation .ay-bubbles-container {
+  background: rgba(255, 255, 255, 1.0);
+  width: 100%;
+  overflow-y: auto;
+  height: 480px;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table {
+  position: relative;
+  top: -16px;
+  padding: 0;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row {
+  white-space: nowrap;
+  display: inline-block;
+  padding: 0 15 15 15;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row .ay-bubble {
+  padding: 10 15 10 15;
+  text-align: justify;
+  white-space: normal;
+  width: calc(100% - 80px);;
+}
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row-separator {
+  height: 0;
+}
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-bubble, .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business .ay-bubble {
+  background: rgba(221, 221, 221, 1.0);
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  line-height: 22.0px;
+  margin-left: 10px;
+  float: left;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-bubble {
+  background: rgba(73, 143, 225, 1.0);
+  color: rgba(255, 255, 255, 1.0);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-right: 10px;
+  line-height: 20.0px;
+  float: right;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row .ay-icon {
+  vertical-align: top;
+  width: 40px;
+  height: 40px;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-icon {
+  background-image: url('../img/ay-blue-circle-user.png');
+  float: right;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-icon {
+  background-image: url('../img/ay-yellow-circle-fingers.png');
+  float: left;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business .ay-icon {
+  background-image: url('../img/ay-yellow-circle-business.png');
+  float: left;
+}
+
+.ay-active-conversation .ay-message-input-area {
+  border-top: solid 1px rgba(238, 238, 238, 1.0);
+  background: rgba(255, 255, 255, 1.0);
+  height: 120px;
+  width: 100%;
+}
+
+.ay-active-conversation .ay-message-input-area .ay-line {
+  height: 1px;
+  width: 100%;
+}
+
+.ay-active-conversation .ay-message-input-area .ay-message {
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  color: rgba(155, 154, 155, 1.0);
+  text-align: justify;
+  line-height: 20.0px;
+  padding: 15 80 15 15;
+  resize: none;
+  border: none;
+}
+
+.ay-active-conversation .ay-message-input-area .ay-submit-message {
+  background: rgba(155, 154, 155, 1.0) url('../img/ay-plane.png') no-repeat 9px 10px;
+  bottom: 80px;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  right: 20px;
+  border-radius: 20px;
+  float: right;
+}
+
+.ay-active-conversation .ay-message-input-area .ay-submit-message.ay-active {
+  background-color: rgba(73, 143, 225, 1.0);
+}
+
+.ay-active-conversation .ay-weve-sent-an-email {
+  margin-top: 20px;
+  font-size: 14.0px;
+  color: rgba(74, 73, 74, 1.0);
+  text-align: left;
+  line-height: 20.0px;
+}
+
+.ay-conversation-history {
+  float: left;
+  background: rgba(255, 255, 255, 0.0);
+  width: 515px;
+  font-size: 14.0px;
+}
+
+.ay-conversation-history .ay-conversation {
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 10px;
+  margin-right: 15px;
+}
+
+.ay-conversation-history .ay-conversations {
+  height: 620px;
+  overflow-y: auto;
+}
+
+.ay-conversation-history .ay-conversation.ay-active {
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 3;
+  border-color: rgba(255, 205, 0, 1.0);
+  box-shadow: none;
+  padding: 17px;
+}
+
+.ay-conversation-history .ay-conversation .ay-details {
+  float: left;
+  width: 70%;
+  line-height: 20px;
+}
+
+.ay-conversation-history .ay-conversation .ay-details .ay-name {
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-size: 18.0px;
+  text-align: left;
+}
+
+.ay-conversation-history .ay-conversation .ay-details .ay-address.ay-mobile::before {
+  content: url('../img/ay-mobile-business.png');
+  top: 1px;
+  position: relative;
+}
+
+.ay-conversation-history .ay-conversation .ay-rating-stars {
+  float: right;
+  height: 37px;
+  width: 30%;
+}
+
+.ay-conversation-history .ay-conversation .ay-rating-stars .ay-stars {
+  width: 90px;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.ay-conversation-history .ay-conversation .ay-rating-stars .ay-star {
+  background: url('../img/ay-grey-star.png') no-repeat;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+}
+
+.ay-conversation-history .ay-conversation .ay-rating-stars .ay-full-star {
+  background: url('../img/ay-gold-star.png') no-repeat;
+}
+
+.ay-conversation-history .ay-conversation .ay-rating-stars .ay-half-star {
+  background: url('../img/ay-half-star.png'), url('../img/ay-grey-star.png');
+  background-repeat: no-repeat;
+}
+
+.ay-conversation-history .ay-conversation .ay-rating-stars .ay-reviews {
+  color: rgba(155, 154, 155, 1.0);
+  text-align: right;
+  line-height: 20px;
+}
+
+.ay-conversation-history .ay-conversation .ay-header-separator {
+  clear: both;
+  border: none;
+  margin: 0;
+  border-bottom: 1px solid rgba(238, 238, 238, 1.0);
+  padding-top: 15px;
+}
+
+.ay-conversation-history .ay-conversation .ay-message-stats {
+  clear: both;
+  color: rgba(154, 154, 155, 1.0);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.ay-conversation-history .ay-conversation .ay-more-info {
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1;
+  border-color: rgba(74, 144, 225, 0.25);
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  color: rgba(73, 143, 225, 1.0);
+  text-align: center;
+  width: 145px;
+  padding: 5px;
+  float: left;
+  cursor: pointer;
+}
+
+.ay-conversation-history .ay-conversation .ay-view-send-message {
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 1.0);
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  color: rgba(255, 255, 255, 1.0);
+  text-align: center;
+  width: 170px;
+  padding: 5px;
+  float: right;
+  cursor: pointer;
+}
+
+.ay-conversation-history .ay-conversation .ay-conversation-bottom-clear {
+  clear: both;
+}
+
+/* Advertiser overrides */
+
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business .ay-bubble {
+  background: rgba(73, 143, 225, 1.0);
+  color: rgba(255, 255, 255, 1.0);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 0px;
+  margin-right: 10px;
+  margin-left: 0px;
+  line-height: 20.0px;
+  float: left;
+}
+
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-bubble,
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-bubble {
+  background: rgba(221, 221, 221, 1.0);
+  color: rgba(0, 0, 0, 1.0);
+  border-top-left-radius: 0px;
+  line-height: 22.0px;
+  margin-left: 10px;
+  margin-right: 0px;
+  float: right;
+}
+
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-icon {
+  background-image: url('../img/ay-grey-circle-user.png');
+  float: left;
+}
+
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-icon {
+  background-image: url('../img/ay-yellow-circle-fingers.png');
+  float: left;
+}
+
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business .ay-icon {
+  background-image: url('../img/ay-blue-circle-business.png');
+  float: right;
+}
+
+.ay-advertiser .ay-conversation-history .ay-conversation.ay-active {
+  border-color: rgba(155, 154, 155, 1.0);
+}
+
+/* for 1280 or less*/
+
+@media screen and (max-width: 1280px) {
+  .ay-messages {
+    min-width: 980px;
+  }
+  .ay-conversation-history {
+    width: 40%;
+    min-width: 423px;
+  }
+  .ay-active-conversation {
+    width: 56%;
+  }
+}
+
+/* for 1024 or less*/
+
+@media screen and (max-width: 1024px) {
+  .ay-messages {
+    min-width: 738px;
+  }
+  .ay-conversation-history {
+    width: 30%;
+    min-width: 250px;
+  }
+  .ay-active-conversation {
+    width: 66%;
+  }
+  .ay-messages .ay-sub-header {
+    font-size: 23px;
+  }
+  .ay-conversation-history .ay-conversation .ay-details {
+    float: none;
+    width: auto;
+  }
+  .ay-conversation-history .ay-conversation .ay-rating-stars {
+    float: none;
+    width: auto;
+  }
+  .ay-conversation-history .ay-conversation .ay-rating-stars .ay-stars {
+    margin-left: 0;
+  }
+  .ay-conversation-history .ay-conversation .ay-rating-stars .ay-reviews {
+    text-align: left;
+  }
+  .ay-conversation-history .ay-conversation .ay-more-info, .ay-conversation-history .ay-conversation .ay-view-send-message {
+    float: none;
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+  .ay-search-clamp {
+    margin: 0;
+  }
+  .ay-messages {
+    /* position: absolute; */
+    width: 100%;
+    min-width: unset;
+    padding: 15 0 0 0;
+  }
+  .ay-messages .ay-header {
+    display: none;
+    margin-left: 10px;
+    font-size: 20px;
+  }
+  .ay-messages .ay-sub-header {
+    margin: 7 0 7 10;
+    font-size: 16px;
+  }
+  .ay-messages .ay-small-screen {
+    display: block;
+  }
+  .ay-messages .ay-sub-headers {
+    position: fixed;
+    top: 0px;
+    background: rgba(238, 238, 238, 1);
+    width: 100%;
+    z-index: 1000;
+    -webkit-backface-visibility: hidden;
+  }
+  .ay-conversation-history {
+    width: 100%;
+    min-width: unset;
+    margin-top: 50px;
+  }
+  .ay-conversation-history .ay-sub-headers .ay-sub-header.ay-users-messages {
+    font-size: 20px;
+  }
+  .ay-conversation-history .ay-conversations {
+    height: unset;
+  }
+  .ay-conversation-history .ay-conversation {
+    padding: 10px;
+    margin-right: 0px;
+    box-shadow: unset;
+    border-radius: 0px;
+  }
+  .ay-conversation-history .ay-conversation.ay-active {
+    border-style: unset;
+    border-width: unset;
+    border-color: unset;
+    border-radius: unset;
+    padding: 10px;
+  }
+  .ay-conversation-history .ay-conversation .ay-details {
+    float: left;
+    width: 70%;
+  }
+  .ay-conversation-history .ay-conversation .ay-rating-stars {
+    float: right;
+    width: 30%;
+  }
+  .ay-conversation-history .ay-conversation .ay-rating-stars .ay-stars {
+    margin-left: auto;
+  }
+  .ay-conversation-history .ay-conversation .ay-rating-stars .ay-reviews {
+    text-align: right;
+  }
+  .ay-conversation-history .ay-conversation .ay-more-info {
+    float: left;
+  }
+  .ay-conversation-history .ay-conversation .ay-view-send-message {
+    float: right;
+  }
+  .ay-active-conversation {
+    background-color: rgba(255, 255, 255, 1.0);
+    width: 100%;
+    height: 100%
+  }
+  .ay-active-conversation .ay-bubbles-container-header {
+    height: 10px;
+    border-radius: 0px;
+    margin-top: 60px;
+  }
+  .ay-active-conversation .ay-bubbles-container {
+    height: auto;
+  }
+  .ay-active-conversation .ay-bubbles-container .ay-bubbles-table {
+    border-spacing: 10px;
+  }
+  .ay-active-conversation .ay-message-input-area {
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+  }
+  .ay-active-conversation .ay-message-input-area .ay-submit-message {
+    bottom: 50px;
+    right: 10px;
+  }
+  .ay-active-conversation .ay-message-input-area .ay-message {
+    padding: 5 60 5 5;
+  }
+  .ay-active-conversation .ay-weve-sent-an-email {
+    display: none;
+  }
+
+  .ay-messages .ay-conversation-history {
+    transition-property: left;
+    transition-duration: 0.5s;
+    position: absolute;
+  }
+  .ay-messages.ay-conversation-selected .ay-header, .ay-messages.ay-conversation-selected .ay-conversation-history {
+    left: -100%
+  }
+  .ay-messages:not(.ay-conversation-selected) .ay-header, .ay-messages:not(.ay-conversation-selected) .ay-conversation-history {
+    left: 0px;
+  }
+  .ay-messages .ay-active-conversation {
+    transition-property: left;
+    transition-duration: 0.5s;
+    position: absolute;
+  }
+  .ay-messages.ay-conversation-selected .ay-active-conversation {
+    left: 0px;
+  }
+  .ay-messages:not(.ay-conversation-selected) .ay-active-conversation {
+    left: 100%;
+  }
+  .ay-messages.ay-conversation-selected .ay-active-conversation .ay-my-message-history {
+    display: block;
+    left: 0px;
+  }
+}
