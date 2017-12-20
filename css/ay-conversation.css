@@ -133,13 +133,13 @@
   padding: 10 15 10 15;
   text-align: justify;
   white-space: normal;
-  width: calc(100% - 80px);;
+  width: calc(100% - 80);;
 }
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages,
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business {
   float: left;
 }
-.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.user {
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user {
   float: right;
 }
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row-separator {
@@ -147,12 +147,12 @@
 }
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-bubble,
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business .ay-bubble {
-  background: rgba(73, 143, 225, 1.0);
-  color: rgba(255, 255, 255, 1);
+  background: rgba(221, 221, 221, 1.0);
+  color: rgba(0, 0, 0, 1.0);
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  margin-right: 50px;
+  margin-left: 50px;
   line-height: 20.0px;
 }
 
@@ -162,9 +162,8 @@
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  margin-right: 10px;
+  margin-right: 50px;
   line-height: 20.0px;
-  float: right;
 }
 
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row .ay-icon {
@@ -204,12 +203,43 @@
   font-size: 16px;
   height: 100%;
   width: 100%;
-  color: rgba(155, 154, 155, 1.0);
+  /*color: rgba(155, 154, 155, 1.0);*/
   text-align: justify;
   line-height: 20.0px;
   padding: 15 80 15 15;
   resize: none;
   border: none;
+}
+
+.ay-active-conversation .ay-message-input-area .ay-message::-webkit-input-placeholder {
+  color: rgba(155, 154, 155, 1.0);
+  transition: opacity 250ms ease-in-out;
+}
+.ay-active-conversation .ay-message-input-area .ay-message:focus::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+.ay-active-conversation .ay-message-input-area .ay-message:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(155, 154, 155, 1.0);
+  transition: opacity 250ms ease-in-out;
+}
+.ay-active-conversation .ay-message-input-area .ay-message:focus:-ms-input-placeholder {
+  opacity: 0.5;
+}
+.ay-active-conversation .ay-message-input-area .ay-message::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(155, 154, 155, 1.0);
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+.ay-active-conversation .ay-message-input-area .ay-message:focus::-moz-placeholder {
+  opacity: 0.5;
+}
+.ay-active-conversation .ay-message-input-area .ay-message:-moz-placeholder { /* Firefox 4 - 18 */
+  color: rgba(155, 154, 155, 1.0);
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+.ay-active-conversation .ay-message-input-area .ay-message:focus:-moz-placeholder {
+  opacity: 0.5;
 }
 
 .ay-active-conversation .ay-message-input-area .ay-submit-message {
@@ -230,9 +260,14 @@
 .ay-active-conversation .ay-weve-sent-an-email {
   margin-top: 20px;
   font-size: 14.0px;
-  color: rgba(74, 73, 74, 1.0);
+  color: rgba(74, 74, 74, 1.0);
   text-align: left;
   line-height: 20.0px;
+}
+
+.ay-active-conversation .ay-weve-sent-an-email b {
+  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  color: rgba(0, 0, 0, 1.0);
 }
 
 .ay-conversation-history {
@@ -333,6 +368,10 @@
   margin-bottom: 15px;
 }
 
+.ay-conversation-history .ay-conversation .ay-message-stats .ay-message-date {
+  color: rgba(0, 0, 0, 1.0);
+}
+
 .ay-conversation-history .ay-conversation .ay-more-info {
   border-radius: 8px;
   border-style: solid;
@@ -342,7 +381,7 @@
   color: rgba(73, 143, 225, 1.0);
   text-align: center;
   width: 145px;
-  padding: 5px;
+  padding: 6px;
   float: left;
   cursor: pointer;
 }
@@ -354,7 +393,7 @@
   color: rgba(255, 255, 255, 1.0);
   text-align: center;
   width: 170px;
-  padding: 5px;
+  padding: 7px;
   float: right;
   cursor: pointer;
 }
@@ -391,7 +430,6 @@
   line-height: 22.0px;
   margin-left: 50px;
   margin-right: 0px;
-  float: right;
 }
 
 .ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-icon {

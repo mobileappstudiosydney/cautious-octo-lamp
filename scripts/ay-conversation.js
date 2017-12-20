@@ -338,9 +338,14 @@ var ayChatContainer = {
         if (this.ayIsValid(history)) {
           $('#ayConversationHeader').text(this.ayConvHeader.replace('{BUSINESS_NAME}', history.customer.businessName));
           $('#ayTextArea').attr("placeholder", this.ayTextAreaPlaceHolder.replace('{BUSINESS_NAME}', this.ayIsConsumer ? history.customer.businessName : history.nickname));
-          var ayFMSG = this.ayFooterDiv.replace('{BUSINESS_NAME}', this.ayIsConsumer ? history.customer.businessName : history.nickname);
-          ayFMSG = ayFMSG.replace('{C_ID}', this.ayIsConsumer ? this.ayCId.replace(/__dot__/g,'.') : history.customer.businessEmail);
-          $('#ayFooterMsg').text(ayFMSG);
+
+          $('#ayFooterMsg').empty();
+          var element = document.getElementById("ayFooterMsg");
+          var boldElement = document.createElement("b");
+          boldElement.appendChild(document.createTextNode(this.ayIsConsumer ? this.ayCId.replace(/__dot__/g,'.') : history.customer.businessEmail));
+          element.appendChild(document.createTextNode("We’ve sent an email to you at "));
+          element.appendChild(boldElement);
+          element.appendChild(document.createTextNode(". You can use the link in the email to get back to this conversation with {BUSINESS_NAME} at anytime.".replace('{BUSINESS_NAME}', this.ayIsConsumer ? history.customer.businessName : history.nickname)));
 
           $('#ayUserHeader').text((this.ayIsConsumer ? history.nickname : history.customer.businessName) + '’s Messages');
           $('#ayMobileUserHeader').text((this.ayIsConsumer ? history.nickname : history.customer.businessName) + '’s Messages');
@@ -348,7 +353,7 @@ var ayChatContainer = {
           uNickName = history.nickname;
 
           if (this.ayIsConsumer) {
-            this.addAutoReplyMessage(history.customer.businessName); //Default message
+            this.ayAddAutoReplyMessage(history.customer.businessName); //Default message
           }
         }
       }
@@ -381,7 +386,7 @@ var ayChatContainer = {
               if (addCustomerAutoRepy) {
                 if (obj.from.toLowerCase() !== 'consumer') {
                   addCustomerAutoRepy = false;
-                  this.addAutoReplyMessage(uNickName); //Default message
+                  this.ayAddAutoReplyMessage(uNickName); //Default message
                 }
               }
             }
@@ -400,12 +405,14 @@ var ayChatContainer = {
             $('#ayConversationListView').append(ayMessage);
             this.ayBeep();
 
-            if (addCustomerAutoRepy) {
-              if (ayMsg.from.toLowerCase() !== 'consumer') {
-                addCustomerAutoRepy = false;
-                this.addAutoReplyMessage(uNickName); //Default message
-              }
+            if (addCustomerAutoRepy && ayMsg.from.toLowerCase() !== 'consumer') {
+              addCustomerAutoRepy = false;
+              this.ayAddAutoReplyMessage(uNickName); //Default message
+
+              this.ayNotifyCustomer(uNickName);
             }
+
+
           }
           //Scroll to bottom of conversation
           var bubblesDiv = $('#ayBubblesContainer');
@@ -421,7 +428,25 @@ var ayChatContainer = {
     }
   },
 
-  addAutoReplyMessage: function(name) {
+  ayNotifyCustomer: function(consumerName) {
+    //TODO - Replace template
+    fetch('https://mas-email-sender.herokuapp.com/sendemail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: 'mobileappstudiosydney@gmail.com',
+        subject: 'A customer would like to book your services',
+        message: 'We’ve notified Isabelle that you’ve replied to their message. Their response will appear below.',
+      })
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  },
+
+  ayAddAutoReplyMessage: function(name) {
     if (this.ayIsConsumer) { //Default message
       var defaultMessage = this.ayMessageDiv;
       defaultMessage = defaultMessage.replace('{MESSAGE_ID}', 'defaultMsg');
@@ -595,7 +620,7 @@ var ayChatContainer = {
   ayDefaultConsumerMsg: 'Please give {BUSINESS_NAME} an idea of what you’d like to talk about (e.g. the details of a job you need done, request some advice or further information about their products and services).',
   ayAdvetiserAutoReply: 'We’ve notified {CONSUMER_NAME} that you’ve replied to their message. Their response will appear below.',
   ayContainerDiv: '<div class="ay-search-clamp"> <div class="ay-messages ay-conversation-selected"> <div id="ayMessagesContainer"> <div id="ayUserHeader" class="ay-header"> </div> <div id="ayHistoryContainer" class="ay-conversation-history"> <div class="ay-sub-headers"><div id="ayMobileUserHeader" class="ay-sub-header ay-users-messages ay-small-screen">{PLACEHOLDER}</div> <div id="ayHistoryHeader" class="ay-sub-header"> My message history </div></div><div id="ayHistoryListView" class="ay-conversations"></div></div><div id="ayConversationContainer" class="ay-active-conversation"> <div class="ay-sub-headers"> <div id="ayBackLink" class="ay-sub-header ay-my-message-history ay-small-screen"> &lt; My message history </div> <div id="ayConversationHeader" class="ay-sub-header"> My messages with Jim’s Mowing </div></div><div class="ay-bubbles-container-header"></div><div id="ayBubblesContainer" class="ay-bubbles-container"><ul id="ayConversationListView" class="ay-bubbles-table"></ul></div> <div class="ay-bubbles-container-footer ay-small-screen"></div> <div class="ay-message-input-area"> <textarea id="ayTextArea" class="ay-message" onkeydown="if(event.keyCode == 13) {ayChatContainer.ayOnClickSend(); return false;}" placeholder="Tap here to message Jim’s Mowing"></textarea> <div id="aySubmitButton" class="ay-submit-message" onclick="ayChatContainer.ayOnClickSend()"></div></div><div id="ayFooterMsg" class="ay-weve-sent-an-email">{FOTTER_MSG}</div></div></div></div></div>',
-  ayHistoryDiv: '<div id="{HISTORY_ID}" class="ay-conversation"> <div class="ay-details"> <div class="ay-name">{BUSINESS_NAME}</div><div class="ay-address">{BUSINESS_ADDRESS}</div></div>{RATINGS_PLACEHOLDER}<hr class="ay-header-separator"/> <div class="ay-message-stats"> Message started: {START_DATE}</div><div class="ay-message-stats"> Last updated: {LAST_UPDATED}</div><div class="ay-links"> <div class="ay-more-info"> <a href="{MORE_INFO_LINK}" target="_blank">More information</a> </div><div class="ay-view-send-message" onclick="ayChatContainer.ayOnClickViewMessage({CONVERSATION_ID})"> View / send message </div></div><div class="ay-conversation-bottom-clear"></div></div>',
+  ayHistoryDiv: '<div id="{HISTORY_ID}" class="ay-conversation"> <div class="ay-details"> <div class="ay-name">{BUSINESS_NAME}</div><div class="ay-address">{BUSINESS_ADDRESS}</div></div>{RATINGS_PLACEHOLDER}<hr class="ay-header-separator"/> <div class="ay-message-stats"> Message started: <span class="ay-message-date">{START_DATE}</span></div><div class="ay-message-stats"> Last updated: <span class="ay-message-date">{LAST_UPDATED}</span></div><div class="ay-links"> <div class="ay-more-info"> <a href="{MORE_INFO_LINK}" target="_blank">More information</a> </div><div class="ay-view-send-message" onclick="ayChatContainer.ayOnClickViewMessage({CONVERSATION_ID})"> View / send message </div></div><div class="ay-conversation-bottom-clear"></div></div>',
   ayRatingsDiv: '<div class="ay-rating-stars"> <div class="ay-stars">{RATING_STARS}</div><div class="ay-reviews">{NO_OF_REVIEWS} reviews </div></div>',
   ayMessageDiv: '<li id="{MESSAGE_ID}" class="ay-bubble-row {CONTENT_TYPE}"> <div class="ay-icon"></div><div class="ay-bubble">{MESSAGE}</div></li><li class="ay-bubble-row-separator"></li>',
   ayConvHeader: ' My messages with {BUSINESS_NAME} ',
