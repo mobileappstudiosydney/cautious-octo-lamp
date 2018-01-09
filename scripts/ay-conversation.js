@@ -127,7 +127,9 @@ var ayChatContainer = {
 
     this.aySortHistory();
 
-    this.ayChatHistory.forEach(function(ayHistory) {
+    for (var i = 0; i < this.ayChatHistory.length; i++) {
+      var ayHistory = this.ayChatHistory[i];
+
       var ayHDiv = this.ayGenerateHistoricalDiv(ayHistory);
 
       $('#ayHistoryListView').append(ayHDiv);
@@ -141,32 +143,30 @@ var ayChatContainer = {
       var ref = firebase.database().ref(path);
       this.ayHistorySubscriptions[ayHistory.key] = ref;
       ref.on('value', function(snapshot) {
-        var subPath = snapshot.ref.parent.path.toString();
-        var updateForConsumer = subPath.startsWith('/customers/');
-        var ary = subPath.split('/');
-        if (ary.length > 4) {
-          var cKey = ary[4];
-          var history = this.ayFindChatHistory(cKey);
-          if (history != null
-            && ((updateForConsumer && history.lastUpdateFromCustomer !== snapshot.val())
-              || (!updateForConsumer && history.lastUpdateFromConsumer !== snapshot.val()))) {
-            var index = this.ayFindChatHistoryIndex(cKey);
-            if (index > -1) {
-              this.ayChatHistory.splice(index, 1);
+        if (snapshot.val() !== null) {
+          var subPath = snapshot.ref.parent.path.toString();
+          var updateForConsumer = subPath.startsWith('/customers/');
+          var ary = subPath.split('/');
+          if (ary.length > 4) {
+            var cKey = ary[4];
+            var history = this.ayFindChatHistory(cKey);
+            if (history != null
+              && ((updateForConsumer && history.lastUpdateFromCustomer !== snapshot.val())
+                || (!updateForConsumer && history.lastUpdateFromConsumer !== snapshot.val()))) {
+              var index = this.ayFindChatHistoryIndex(cKey);
+              if (index > -1) {
+                this.ayChatHistory.splice(index, 1);
+              }
+
+              history[updateForConsumer ? 'lastUpdateFromCustomer' : 'lastUpdateFromConsumer'] = snapshot.val();
+              this.ayChatHistory.splice(0, 0, history);
+
+              this.ayUpdateHistoryView(cKey, history);
             }
-
-            history[updateForConsumer ? 'lastUpdateFromCustomer' : 'lastUpdateFromConsumer'] = snapshot.val();
-            this.ayChatHistory.splice(0, 0, history);
-            // $('#' + cKey).remove();
-            //
-            // var hDiv = this.ayGenerateHistoricalDiv(history);
-            // $('#ayHistoryListView').prepend(hDiv);
-
-            this.ayUpdateHistoryView(cKey, history);
           }
         }
       }.bind(this));
-    }.bind(this));
+    }
 
     var selectedDiv = $('#' + this.ayConversationId);
     if (typeof(selectedDiv) !== 'undefined' && selectedDiv.length > 0) {
@@ -182,8 +182,9 @@ var ayChatContainer = {
 
   ayGenerateHistoricalDiv: function(ayHistory) {
     var ayHDiv = this.ayHistoryDiv;
-
-    var latUpdatedAt = ayHistory.lastUpdateFromCustomer > ayHistory.lastUpdateFromConsumer ? ayHistory.lastUpdateFromCustomer : ayHistory.lastUpdateFromConsumer;
+    var lastUpdateCustomer = isNaN(ayHistory.lastUpdateFromCustomer) ? 1 : ayHistory.lastUpdateFromCustomer;
+    var lastUpdateConsumer = isNaN(ayHistory.lastUpdateFromConsumer) ? 1 : ayHistory.lastUpdateFromConsumer;
+    var latUpdatedAt = lastUpdateCustomer > lastUpdateConsumer ? lastUpdateCustomer : lastUpdateConsumer;
     if (this.ayIsConsumer) {
       ayHDiv = ayHDiv.replace('{RATINGS_PLACEHOLDER}', this.ayRatingsDiv);
       ayHDiv = ayHDiv.replace('{BUSINESS_NAME}', ayHistory.customer.businessName);
@@ -361,8 +362,8 @@ var ayChatContainer = {
       if (this.ayConvDBRef !== null) {
         this.ayConvDBRef.off();  //Detach previous listeners
       }
-      var addCustomerAutoRepy = !this.ayIsConsumer;
-      var addConsumerAutoReply = this.ayIsConsumer;
+      this.ayAddCustomerAutoReply = !this.ayIsConsumer;
+      this.ayAddConsumerAutoReply = this.ayIsConsumer;
       firebase.database().ref('/consumers/' + this.ayCId + '/chats/' + this.ayConversationId + '/conversation').once('value').then(function(snapshot) {
         if (snapshot !== null && snapshot.val() !== null) {
           if (this.ayIsMessageFromCurrentConversation(snapshot.ref.path.toString())) {
@@ -370,7 +371,9 @@ var ayChatContainer = {
             var keys = Object.keys(ayMessages);
             var ayMsgArray = [];
             keys.forEach(function(key) {
-              ayMsgArray.push(ayMessages[key]);
+              var obj = ayMessages[key];
+              obj['key'] = key;
+              ayMsgArray.push(obj);
             }.bind(this));
 
             ayMsgArray = this.aySortMessages(ayMsgArray);
@@ -378,20 +381,24 @@ var ayChatContainer = {
             for (var i = 0; i < ayMsgArray.length; i++) {
               var obj = ayMsgArray[i];
 
+              if (obj['key'] === 'DONOTRENDERME') {
+                continue; //Skip
+              }
+
               var ayMessage = this.ayMessageDiv;
               ayMessage = ayMessage.replace('{MESSAGE_ID}', obj.timestamp);
               ayMessage = ayMessage.replace('{MESSAGE}', obj.text);
               ayMessage = ayMessage.replace('{CONTENT_TYPE}', obj.from.toLowerCase() === 'consumer' ? "ay-user" : "ay-business");
               $('#ayConversationListView').append(ayMessage);
 
-              if (addCustomerAutoRepy) {
+              if (this.ayAddCustomerAutoReply) {
                 if (obj.from.toLowerCase() !== 'consumer') {
-                  addCustomerAutoRepy = false;
+                  this.ayAddCustomerAutoReply = false;
                   this.ayAddAutoReplyMessage(uNickName); //Default message
                 }
-              } else if (addConsumerAutoReply) {
+              } else if (this.ayAddConsumerAutoReply) {
                 if (obj.from.toLowerCase() === 'consumer') {
-                  addConsumerAutoReply = false;
+                  this.ayAddConsumerAutoReply = false;
 
                   this.ayAddConsumerAutoReplyMessage(history.customer.businessName);
                 }
@@ -402,6 +409,10 @@ var ayChatContainer = {
 
         this.ayConvDBRef = firebase.database().ref('/consumers/' + this.ayCId + '/chats/' + this.ayConversationId + '/conversation');
         this.ayConvDBRef.on('child_added', function(snapshot) {
+          if (snapshot.key === 'DONOTRENDERME') {
+            return; //Skip
+          }
+
           var ayMsg = snapshot.val();
 
           if (this.ayIsMessageFromCurrentConversation(snapshot.ref.path.toString()) && $('#' + ayMsg.timestamp).length === 0) {
@@ -412,14 +423,17 @@ var ayChatContainer = {
             $('#ayConversationListView').append(ayMessage);
             this.ayBeep();
 
-            if (addCustomerAutoRepy && ayMsg.from.toLowerCase() !== 'consumer') {
-              addCustomerAutoRepy = false;
+            if (this.ayAddCustomerAutoReply && ayMsg.from.toLowerCase() !== 'consumer') {
+              this.ayAddCustomerAutoReply = false;
               this.ayAddAutoReplyMessage(uNickName); //Default message
 
-              this.ayNotifyCustomer(uNickName); //Email consumer
-            } else if (addConsumerAutoReply && ayMsg.from.toLowerCase() === 'consumer') {
-              addCustomerAutoRepy = false;
+              this.aySendEmailNotification("CONSUMER EMAIL 2"); //Email consumer
+            } else if (this.ayAddConsumerAutoReply && ayMsg.from.toLowerCase() === 'consumer') {
+              this.ayAddConsumerAutoReply = false;
+              this.ayAddConsumerAutoReplyMessage(history.customer.businessName);
 
+              //TODO - Commented out below code to avoid server crashes
+              // this.aySendEmailNotification("BUSINESS EMAIL 1"); //Email customer
             }
           }
           //Scroll to bottom of conversation
@@ -436,24 +450,41 @@ var ayChatContainer = {
     }
   },
 
-  ayNotifyCustomer: function(consumerName) {
-    /*
-    //TODO - Replace template
-    fetch('https://mas-email-sender.herokuapp.com/sendemail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: 'mobileappstudiosydney@gmail.com',
-        subject: 'A customer would like to book your services',
-        message: 'We’ve notified Isabelle that you’ve replied to their message. Their response will appear below.',
+  aySendEmailNotification: function(template) {
+    var history = this.ayFindChatHistory(this.ayConversationId);
+    var email = '';
+    var conversationUrl = 'http://localhost/';
+    if (history !== null) {
+      if (template === 'BUSINESS EMAIL 1') {
+        email = history.customer.businessEmail;
+        conversationUrl += 'advertiser.html';
+        var token = btoa(history.customer.advertiserId + '/' + history.ayCId + '/' + this.ayConversationId);
+        conversationUrl += '?token=' + token;
+      } else {
+        email = this.ayCId.replace(/__dot__/g,'.');
+        conversationUrl += 'customer.html';
+        var token = btoa(this.ayCId + '/chats/' + this.ayConversationId);
+        conversationUrl += '?token=' + token;
+      }
+
+      fetch('https://mas-email-sender.herokuapp.com/sendsensisemail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          businessname: history.customer.businessName,
+          conversationurl: conversationUrl,
+          message: '',
+          consumername: history.nickname,
+          templatetype: template
+        })
       })
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-    */
+      .catch(function(error) {
+        console.error('Send email error: ' + error);
+      });
+    }
   },
 
   ayAddAutoReplyMessage: function(name) {
@@ -475,7 +506,7 @@ var ayChatContainer = {
   ayAddConsumerAutoReplyMessage: function(name) {
     var defaultMessage = this.ayMessageDiv;
     defaultMessage = defaultMessage.replace('{MESSAGE_ID}', 'defaultMsg-2');
-    defaultMessage = defaultMessage.replace('{MESSAGE}', this.ayConsumerAutoReply.replace('{BUSINESS_NAME}', history.customer.businessName));
+    defaultMessage = defaultMessage.replace('{MESSAGE}', this.ayConsumerAutoReply.replace('{BUSINESS_NAME}', name));
     defaultMessage = defaultMessage.replace('{CONTENT_TYPE}', "ay-yellow-pages");
     $('#ayConversationListView').append(defaultMessage);
   },
@@ -585,6 +616,10 @@ var ayChatContainer = {
       var a2 = parseFloat(a.lastUpdateFromCustomer);
       var b1 = parseFloat(b.lastUpdateFromConsumer);
       var b2 = parseFloat(b.lastUpdateFromCustomer);
+      a1 = isNaN(a1) ? 0 : a1;
+      a2 = isNaN(a2) ? 0 : a2;
+      b1 = isNaN(b1) ? 0 : b1;
+      b2 = isNaN(b2) ? 0 : b2;
       return (b1 > b2 ? b1 : b2) - (a1 > a2 ? a1 : a2);
     });
   },
@@ -645,7 +680,9 @@ var ayChatContainer = {
   ayConvHeader: ' My messages with {BUSINESS_NAME} ',
   ayTextAreaPlaceHolder: 'Tap here to message {BUSINESS_NAME}',
   ayFooterDiv: 'We’ve sent an email to you at {C_ID}. You can use the link in the email to get back to this conversation with {BUSINESS_NAME} at anytime.',
-  ayLoadingDiv: '<img class="ay-loading" src="/img/ay-ypol.gif" alt="Loading" title="Loading" />'
+  ayLoadingDiv: '<img class="ay-loading" src="/img/ay-ypol.gif" alt="Loading" title="Loading" />',
+  ayAddCustomerAutoReply: false,
+  ayAddConsumerAutoReply: false
 };
 
 function initConsumerMessagingContainer(token, divId) {
