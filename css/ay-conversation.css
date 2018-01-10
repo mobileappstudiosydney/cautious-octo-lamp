@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "ay-YellowPages-Regular";
   src: url('../fonts/YellowPages-Regular.otf?raw=true') format("opentype");
 }
@@ -6,12 +6,12 @@
 @font-face {
   font-family: "ay-YellowPages-Bold";
   src: url('../fonts/YellowPages-Bold.otf?raw=true') format("opentype");
-}
+} */
 
 @media (min-width: 1024px) {
   .ay-search-clamp {
     margin: 0 15px 15px;
-    font-family: "ay-YellowPages-Regular", Helvetica, Arial, serif;
+    font-family: "YellowPages Reg", Helvetica, Arial, serif;
     color: rgba(0, 0, 0, 1.0);
     line-height: 16.0px;
   }
@@ -21,30 +21,30 @@
   .ay-search-clamp {
     margin-left: auto !important;
     margin-right: auto !important;
-    font-family: "ay-YellowPages-Regular", Helvetica, Arial, serif;
+    font-family: "YellowPages Reg", Helvetica, Arial, serif;
     color: rgba(0, 0, 0, 1.0);
     line-height: 16.0px;
   }
 }
 
 .ay-conversation-history .ay-conversation .ay-more-info a:link {
-    font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+    font-family: "YellowPages Bold", Helvetica, Arial, serif;
     color: rgba(73, 143, 225, 1.0);
     text-decoration:none;
 }
 
 .ay-conversation-history .ay-conversation .ay-more-info a:visited {
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   color: rgba(73, 143, 225, 1.0);
 }
 
 .ay-conversation-history .ay-conversation .ay-more-info a:hover {
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   color: rgba(73, 143, 225, 1.0);
 }
 
 .ay-conversation-history .ay-conversation .ay-more-info a:active {
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   color: rgba(73, 143, 225, 1.0);
 }
 
@@ -61,7 +61,7 @@
 
 .ay-search-clamp {
   max-width: 1240px;
-  font-family: "ay-YellowPages-Regular", Helvetica, Arial, serif;
+  font-family: "YellowPages Reg", Helvetica, Arial, serif;
   color: rgba(0, 0, 0, 1.0);
   line-height: 16.0px;
 }
@@ -74,14 +74,14 @@
   display: none;
 }
 .ay-messages .ay-header {
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   font-size: 36.0px;
   text-align: left;
   line-height: 34.0px;
 }
 
 .ay-messages .ay-sub-header {
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   font-size: 24.0px;
   text-align: left;
   line-height: 23.0px;
@@ -131,10 +131,10 @@
 }
 
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row .ay-bubble {
-  padding: 10 15 10 15 !important;
+  padding: 10 15 10 15;
   text-align: justify;
   white-space: normal;
-  width: calc(100% - 80) !important;
+  width: calc(100% - 80);
 }
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages,
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business {
@@ -267,7 +267,7 @@
 }
 
 .ay-active-conversation .ay-weve-sent-an-email b {
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   color: rgba(0, 0, 0, 1.0);
 }
 
@@ -309,7 +309,7 @@
 }
 
 .ay-conversation-history .ay-conversation .ay-details .ay-name {
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   font-size: 18.0px;
   text-align: left;
 }
@@ -378,7 +378,7 @@
   border-style: solid;
   border-width: 1;
   border-color: rgba(74, 144, 225, 0.25);
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   color: rgba(73, 143, 225, 1.0);
   text-align: center;
   width: 145px;
@@ -390,7 +390,7 @@
 .ay-conversation-history .ay-conversation .ay-view-send-message {
   border-radius: 8px;
   background: rgba(0, 0, 0, 1.0);
-  font-family: "ay-YellowPages-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", Helvetica, Arial, serif;
   color: rgba(255, 255, 255, 1.0);
   text-align: center;
   width: 170px;
