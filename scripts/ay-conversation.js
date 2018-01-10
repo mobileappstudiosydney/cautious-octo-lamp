@@ -437,8 +437,7 @@ var ayChatContainer = {
               this.ayAddConsumerAutoReply = false;
               this.ayAddConsumerAutoReplyMessage(history.customer.businessName);
 
-              //TODO - Commented out below code to avoid server crashes
-              // this.aySendEmailNotification("BUSINESS EMAIL 1"); //Email customer
+              this.aySendEmailNotification("BUSINESS EMAIL 1"); //Email customer
             }
           }
           //Scroll to bottom of conversation
