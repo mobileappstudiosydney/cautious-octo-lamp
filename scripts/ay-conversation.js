@@ -11,7 +11,6 @@ var ayChatContainer = {
   ayAdvId: null,
   ayAdvertiser: null,
   ayHistoryCount: 0,
-  ayHistorySubscriptions: [],
 
   ayIsValid: function(variable) {
       return (typeof(variable) !== 'undefined' && variable !== null);
@@ -118,12 +117,6 @@ var ayChatContainer = {
   },
 
   ayReloadConversationHistory: function() {
-    //Clear listeners
-    Object.keys(this.ayHistorySubscriptions).forEach(function(subscriptionKey) {
-      this.ayHistorySubscriptions[subscriptionKey].off();
-    }.bind(this));
-    this.ayHistorySubscriptions = [];
-
     $('#ayHistoryListView').empty();
 
     this.aySortHistory();
@@ -135,15 +128,14 @@ var ayChatContainer = {
 
       $('#ayHistoryListView').append(ayHDiv);
 
-      /*//Subscribe to events
+      //Subscribe to events
       if (this.ayIsConsumer) {
         var path = '/customers/' + ayHistory.customer.advertiserId + '/' + this.ayCId + '/' + ayHistory.key + '/lastUpdateFromCustomer';
       } else {
         var path = '/consumers/' + this.ayCId + '/chats/' + ayHistory.key + '/lastUpdateFromConsumer';
       }
       var ref = firebase.database().ref(path);
-      this.ayHistorySubscriptions[ayHistory.key] = ref;
-      ref.on('value', function(snapshot) {
+      ref.once('value', function(snapshot) {
         if (snapshot.val() !== null) {
           var subPath = snapshot.ref.parent.path.toString();
           var updateForConsumer = subPath.startsWith('/customers/');
@@ -166,7 +158,7 @@ var ayChatContainer = {
             }
           }
         }
-      }.bind(this));*/
+      }.bind(this));
     }
 
     var selectedDiv = $('#' + this.ayConversationId);
@@ -539,7 +531,7 @@ var ayChatContainer = {
       }
 
       firebase.database().ref().update(updates);
-
+      /*//Get the lastUpdatedTime to refresh the list view
       var rPath = '';
       if (this.ayIsConsumer) {
         rPath = '/consumers/' + this.ayCId + '/chats/' + this.ayConversationId + '/lastUpdateFromConsumer';
@@ -559,7 +551,7 @@ var ayChatContainer = {
             this.ayUpdateHistoryView(this.ayConversationId, history);
           }
         }
-      }.bind(this));
+      }.bind(this));*/
     }
   },
 
