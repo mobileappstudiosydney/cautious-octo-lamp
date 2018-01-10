@@ -210,6 +210,7 @@
   padding: 15px 80px 15px 15px;
   resize: none;
   border: none;
+  box-sizing: border-box;
 }
 
 .ay-active-conversation .ay-message-input-area .ay-message::-webkit-input-placeholder {
