@@ -452,6 +452,20 @@
 
 .ay-advertiser .ay-conversation-history .ay-conversation.ay-active {
   border-color: rgba(155, 154, 155, 1.0);
+  border-radius: 0px;
+}
+
+.ay-advertiser .ay-conversation-history .ay-conversation {
+  border-radius: 0px;
+}
+
+.ay-advertiser .ay-active-conversation .ay-bubbles-container-header {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.ay-advertiser .ay-conversation-history .ay-conversation .ay-view-send-message {
+  border-radius: 0px;
 }
 
 /* for 1280 or less*/
