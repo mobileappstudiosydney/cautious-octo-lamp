@@ -684,7 +684,7 @@ var ayChatContainer = {
   ayConvHeader: ' My messages with {BUSINESS_NAME} ',
   ayTextAreaPlaceHolder: 'Tap here to message {BUSINESS_NAME}',
   ayFooterDiv: 'We’ve sent an email to you at {C_ID}. You can use the link in the email to get back to this conversation with {BUSINESS_NAME} at anytime.',
-  ayLoadingDiv: '<img class="ay-loading" src="../img/ay-ypol.gif" alt="Loading" title="Loading" />',
+  ayLoadingDiv: '<div class="ay-loading"></div>',
   ayAddCustomerAutoReply: false,
   ayAddConsumerAutoReply: false
 };

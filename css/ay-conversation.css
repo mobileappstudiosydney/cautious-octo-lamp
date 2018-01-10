@@ -51,7 +51,8 @@
 .ay-loading {
   width: 80px;
   height: 88.849px;
-
+  background-image: url('../img/ay-ypol.gif');
+  background-size: cover;
   position:absolute; /*it can be fixed too*/
   left:0; right:0;
   top:0; bottom:0;
