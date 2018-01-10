@@ -118,7 +118,7 @@
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table {
   list-style-type: none;
   position: relative;
-  top: -16px;
+  /* top: -16px; */
   padding: 0px;
 }
 
