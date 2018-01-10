@@ -135,7 +135,7 @@ var ayChatContainer = {
 
       $('#ayHistoryListView').append(ayHDiv);
 
-      //Subscribe to events
+      /*//Subscribe to events
       if (this.ayIsConsumer) {
         var path = '/customers/' + ayHistory.customer.advertiserId + '/' + this.ayCId + '/' + ayHistory.key + '/lastUpdateFromCustomer';
       } else {
@@ -166,7 +166,7 @@ var ayChatContainer = {
             }
           }
         }
-      }.bind(this));
+      }.bind(this));*/
     }
 
     var selectedDiv = $('#' + this.ayConversationId);
