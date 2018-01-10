@@ -78,6 +78,7 @@ var ayChatContainer = {
       this.aySwitchConversation();
     }
     $('.ay-messages').addClass('ay-conversation-selected');
+    this.ayScrollToBottomOfConversationHistory();
   },
 
   ayOnClickSend: function() {
@@ -441,16 +442,20 @@ var ayChatContainer = {
             }
           }
           //Scroll to bottom of conversation
-          var bubblesDiv = $('#ayBubblesContainer');
-          if (typeof(bubblesDiv) !== 'undefined' && bubblesDiv.length > 0) {
-            if (navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
-              window.scrollTo(0,bubblesDiv[0].scrollHeight);
-            } else {
-              bubblesDiv[0].scrollTop = bubblesDiv[0].scrollHeight;
-            }
-          }
+          this.ayScrollToBottomOfConversationHistory();
         }.bind(this));
       }.bind(this));
+    }
+  },
+
+  ayScrollToBottomOfConversationHistory: function() {
+    var bubblesDiv = $('#ayBubblesContainer');
+    if (typeof(bubblesDiv) !== 'undefined' && bubblesDiv.length > 0) {
+      if (navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
+        window.scrollTo(0,bubblesDiv[0].scrollHeight);
+      } else {
+        bubblesDiv[0].scrollTop = bubblesDiv[0].scrollHeight;
+      }
     }
   },
 
