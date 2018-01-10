@@ -468,6 +468,24 @@
   border-radius: 0px;
 }
 
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-bubble,
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-bubble {
+  border-top-right-radius: 8px;
+}
+
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-bubble,
+.ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business .ay-bubble {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 8px;
+}
+
+/* Remove border radius from message bubbles for advertiser */
+/* .ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-bubble,
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-bubble,
+.ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business .ay-bubble {
+  border-radius: 0px;
+} */
+
 /* for 1280 or less*/
 
 @media screen and (max-width: 1280px) {
@@ -611,6 +629,7 @@
   }
   .ay-active-conversation .ay-bubbles-container .ay-bubbles-table {
     border-spacing: 10px;
+    top: -20px;
   }
   .ay-active-conversation .ay-message-input-area {
     height: 60px;
