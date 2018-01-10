@@ -337,6 +337,10 @@ var ayChatContainer = {
       if (this.ayChatHistory !== null) {
         var history = this.ayFindChatHistory(this.ayConversationId);
         if (this.ayIsValid(history)) {
+          if (!this.ayIsConsumer && history.ayCId !== null) {
+            this.ayCId = history.ayCId;
+          }
+
           $('#ayConversationHeader').text(this.ayConvHeader.replace('{BUSINESS_NAME}', history.customer.businessName));
           $('#ayTextArea').attr("placeholder", this.ayTextAreaPlaceHolder.replace('{BUSINESS_NAME}', this.ayIsConsumer ? history.customer.businessName : history.nickname));
 
@@ -680,7 +684,7 @@ var ayChatContainer = {
   ayConvHeader: ' My messages with {BUSINESS_NAME} ',
   ayTextAreaPlaceHolder: 'Tap here to message {BUSINESS_NAME}',
   ayFooterDiv: 'We’ve sent an email to you at {C_ID}. You can use the link in the email to get back to this conversation with {BUSINESS_NAME} at anytime.',
-  ayLoadingDiv: '<img class="ay-loading" src="/img/ay-ypol.gif" alt="Loading" title="Loading" />',
+  ayLoadingDiv: '<img class="ay-loading" src="../img/ay-ypol.gif" alt="Loading" title="Loading" />',
   ayAddCustomerAutoReply: false,
   ayAddConsumerAutoReply: false
 };
