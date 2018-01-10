@@ -76,8 +76,8 @@ var ayChatContainer = {
       $('#' + historyId).addClass('ay-active');
 
       this.aySwitchConversation();
-      $('.ay-messages').addClass('ay-conversation-selected');
     }
+    $('.ay-messages').addClass('ay-conversation-selected');
   },
 
   ayOnClickSend: function() {
