@@ -627,10 +627,11 @@
   }
   .ay-active-conversation .ay-bubbles-container {
     height: auto;
+    margin-bottom: 20px;
   }
   .ay-active-conversation .ay-bubbles-container .ay-bubbles-table {
     border-spacing: 10px;
-    top: -20px;
+    /* top: -20px; */
   }
   .ay-active-conversation .ay-message-input-area {
     height: 60px;
