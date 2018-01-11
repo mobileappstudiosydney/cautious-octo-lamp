@@ -133,8 +133,9 @@
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row .ay-bubble {
   padding: 10px 15px 10px 15px;
   /* text-align: justify; */
-  white-space: normal;
+  /* white-space: normal; */
   /* width: calc(100% - 80px); */
+  white-space: pre-wrap;
 }
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages,
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business {
