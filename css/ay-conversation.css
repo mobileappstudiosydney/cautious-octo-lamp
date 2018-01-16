@@ -97,6 +97,22 @@
   width: 100%;
   float: left;
   color: rgba(74, 74, 74, 1.0);
+  display: block;
+}
+
+.ay-messages .ay-mobile-feedback {
+  font-family: "YellowPages Reg", "NettoWeb", Helvetica, Arial, serif;
+  font-size: 14.0px;
+  text-align: center;
+  line-height: 20.0px;
+  margin: 20px 0px 20px 0px;
+  width: 100%;
+  float: left;
+  color: rgba(74, 74, 74, 1.0);
+}
+
+.ay-messages .ay-mobile-feedback {
+  display: none;
 }
 
 .ay-active-conversation {
@@ -581,6 +597,12 @@
     width: 100%;
     z-index: 1000;
     -webkit-backface-visibility: hidden;
+  }
+  .ay-messages .ay-feedback {
+    display: none;
+  }
+  .ay-messages .ay-mobile-feedback {
+    display: block;
   }
   .ay-conversation-history {
     width: 100%;
