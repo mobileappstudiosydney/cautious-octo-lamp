@@ -88,6 +88,17 @@
   margin: 20px 0px 20px 0px;
 }
 
+.ay-messages .ay-feedback {
+  font-family: "YellowPages Reg", "NettoWeb", Helvetica, Arial, serif;
+  font-size: 14.0px;
+  text-align: center;
+  line-height: 20.0px;
+  margin: 20px 0px 20px 0px;
+  width: 100%;
+  float: left;
+  color: rgba(74, 74, 74, 1.0);
+}
+
 .ay-active-conversation {
   float: left;
   width: 680px;
