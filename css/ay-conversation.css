@@ -28,23 +28,23 @@
 }
 
 .ay-conversation-history .ay-conversation .ay-more-info a:link {
-    font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+    font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
     color: rgba(73, 143, 225, 1.0);
     text-decoration:none;
 }
 
 .ay-conversation-history .ay-conversation .ay-more-info a:visited {
-  font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
   color: rgba(73, 143, 225, 1.0);
 }
 
 .ay-conversation-history .ay-conversation .ay-more-info a:hover {
-  font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
   color: rgba(73, 143, 225, 1.0);
 }
 
 .ay-conversation-history .ay-conversation .ay-more-info a:active {
-  font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
   color: rgba(73, 143, 225, 1.0);
 }
 
@@ -74,14 +74,14 @@
   display: none;
 }
 .ay-messages .ay-header {
-  font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
   font-size: 36.0px;
   text-align: left;
   line-height: 34.0px;
 }
 
 .ay-messages .ay-sub-header {
-  font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
   font-size: 24.0px;
   text-align: left;
   line-height: 23.0px;
@@ -339,7 +339,7 @@
 }
 
 .ay-conversation-history .ay-conversation .ay-details .ay-name {
-  font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
   font-size: 18.0px;
   text-align: left;
 }
@@ -408,7 +408,7 @@
   border-style: solid;
   border-width: 1px;
   border-color: rgba(74, 144, 225, 0.25);
-  font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
   color: rgba(73, 143, 225, 1.0);
   text-align: center;
   width: 145px;
@@ -420,7 +420,7 @@
 .ay-conversation-history .ay-conversation .ay-view-send-message {
   border-radius: 8px;
   background: rgba(0, 0, 0, 1.0);
-  font-family: "YellowPages Bold", "NettoWeb-Bold", Helvetica, Arial, serif;
+  font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
   color: rgba(255, 255, 255, 1.0);
   text-align: center;
   width: 170px;
