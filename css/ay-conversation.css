@@ -576,7 +576,7 @@
     /* position: absolute; */
     width: 100%;
     min-width: unset;
-    padding: 15px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
   }
   .ay-messages .ay-header {
     display: none;
@@ -584,14 +584,14 @@
     font-size: 20px;
   }
   .ay-messages .ay-sub-header {
-    margin: 7px 0px 7px 10px;
+    margin: 0px 0px 7px 10px;
     font-size: 16px;
   }
   .ay-messages .ay-small-screen {
     display: block;
   }
   .ay-messages .ay-sub-headers {
-    position: fixed;
+    /* position: fixed; */
     top: 0px;
     background: rgba(238, 238, 238, 1);
     width: 100%;
@@ -607,7 +607,7 @@
   .ay-conversation-history {
     width: 100%;
     min-width: unset;
-    margin-top: 50px;
+    margin-top: 7px;
   }
   .ay-conversation-history .ay-sub-headers .ay-sub-header.ay-users-messages {
     font-size: 20px;
@@ -654,6 +654,7 @@
     height: 100%
   }
   .ay-active-conversation .ay-bubbles-container-header {
+    display: none;
     height: 10px;
     border-radius: 0px;
     margin-top: 60px;
