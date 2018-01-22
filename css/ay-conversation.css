@@ -105,9 +105,8 @@
   font-size: 14.0px;
   text-align: center;
   line-height: 20.0px;
-  margin: 20px 0px 20px 0px;
-  width: 100%;
-  float: left;
+  margin: 20px;
+  float: unset;
   color: rgba(74, 74, 74, 1.0);
 }
 
