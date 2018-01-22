@@ -204,16 +204,19 @@
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-icon {
   background-image: url('../img/ay-blue-circle-user.png');
   float: right;
+  background-size: contain;
 }
 
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-icon {
   background-image: url('../img/ay-yellow-circle-fingers.png');
   float: left;
+  background-size: contain;
 }
 
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-business .ay-icon {
   background-image: url('../img/ay-yellow-circle-business.png');
   float: left;
+  background-size: contain;
 }
 
 .ay-active-conversation .ay-message-input-area {
@@ -273,7 +276,8 @@
 }
 
 .ay-active-conversation .ay-message-input-area .ay-submit-message {
-  background: rgba(155, 154, 155, 1.0) url('../img/ay-plane.png') no-repeat 9px 10px;
+  background-image: url('../img/ay-submit-inactive.png');
+  background-size: contain;
   bottom: 80px;
   height: 40px;
   width: 40px;
@@ -284,7 +288,8 @@
 }
 
 .ay-active-conversation .ay-message-input-area .ay-submit-message.ay-active {
-  background-color: rgba(73, 143, 225, 1.0);
+  background-image: url('../img/ay-submit-active.png');
+  background-size: contain;
 }
 
 .ay-active-conversation .ay-weve-sent-an-email {
