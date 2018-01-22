@@ -499,6 +499,7 @@
 
 .ay-advertiser .ay-conversation-history .ay-conversation .ay-view-send-message {
   border-radius: 0px;
+  display: none;
 }
 
 .ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-bubble,
