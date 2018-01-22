@@ -318,6 +318,7 @@
   padding: 20px;
   margin-bottom: 10px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .ay-conversation-history .ay-conversations {
@@ -416,7 +417,6 @@
   width: 145px;
   padding: 6px;
   float: left;
-  cursor: pointer;
 }
 
 .ay-conversation-history .ay-conversation .ay-view-send-message {
@@ -428,7 +428,6 @@
   width: 170px;
   padding: 7px;
   float: right;
-  cursor: pointer;
 }
 
 .ay-conversation-history .ay-conversation .ay-conversation-bottom-clear {
