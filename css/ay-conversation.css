@@ -607,7 +607,7 @@
   }
   .ay-messages .ay-sub-headers {
     position: fixed;
-    top: 50px;
+    top: 60px;
     background: rgba(238, 238, 238, 1);
     width: 100%;
     z-index: 1000;
@@ -630,7 +630,7 @@
   }
   .ay-conversation-history .ay-conversations {
     height: unset;
-    margin-top: 50px;
+    margin-top: 60px;
   }
   .ay-conversation-history .ay-conversation {
     padding: 10px;
