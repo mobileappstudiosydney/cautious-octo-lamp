@@ -607,7 +607,8 @@
   }
   .ay-messages .ay-sub-headers {
     position: fixed;
-    top: 60px;
+    top: 50px;
+    padding-top: 7px;
     background: rgba(238, 238, 238, 1);
     width: 100%;
     z-index: 1000;
