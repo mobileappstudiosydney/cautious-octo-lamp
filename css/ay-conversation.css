@@ -141,6 +141,7 @@
   width: 100%;
   overflow-y: auto;
   height: calc(100vh - 441px);
+  margin-top: unset;
 }
 
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table {
@@ -330,6 +331,7 @@
 .ay-conversation-history .ay-conversations {
   height: calc(100vh - 300px);
   overflow-y: auto;
+  margin-top: unset;
 }
 
 .ay-conversation-history .ay-conversation.ay-active {
@@ -515,6 +517,11 @@
   border-top-right-radius: 8px;
 }
 
+.ay-messages .ay-sub-headers {
+  position: unset;
+  top: unset;
+}
+
 /* Remove border radius from message bubbles for advertiser */
 /* .ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-user .ay-bubble,
 .ay-advertiser .ay-active-conversation .ay-bubbles-container .ay-bubbles-table .ay-bubble-row.ay-yellow-pages .ay-bubble,
@@ -599,8 +606,8 @@
     display: block;
   }
   .ay-messages .ay-sub-headers {
-    /* position: fixed; */
-    top: 0px;
+    position: fixed;
+    top: 50px;
     background: rgba(238, 238, 238, 1);
     width: 100%;
     z-index: 1000;
@@ -623,6 +630,7 @@
   }
   .ay-conversation-history .ay-conversations {
     height: unset;
+    margin-top: 50px;
   }
   .ay-conversation-history .ay-conversation {
     padding: 10px;
@@ -672,6 +680,7 @@
   .ay-active-conversation .ay-bubbles-container {
     height: auto;
     margin-bottom: 20px;
+    margin-top: 70px;
   }
   .ay-active-conversation .ay-bubbles-container .ay-bubbles-table {
     border-spacing: 10px;
