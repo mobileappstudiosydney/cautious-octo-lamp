@@ -140,7 +140,7 @@
   background: rgba(255, 255, 255, 1.0);
   width: 100%;
   overflow-y: auto;
-  height: calc(100% - 441px);
+  height: calc(100vh - 441px);
 }
 
 .ay-active-conversation .ay-bubbles-container .ay-bubbles-table {
@@ -328,7 +328,7 @@
 }
 
 .ay-conversation-history .ay-conversations {
-  height: calc(100% - 300px);
+  height: calc(100vh - 300px);
   overflow-y: auto;
 }
 
