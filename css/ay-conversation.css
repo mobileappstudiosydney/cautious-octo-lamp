@@ -27,6 +27,10 @@
   }
 }
 
+.ay-info {
+  display: none;
+}
+
 .ay-conversation-history .ay-conversation .ay-more-info a:link {
     font-family: "YellowPages Bold", "NettoWebBold", Helvetica, Arial, serif;
     color: rgba(73, 143, 225, 1.0);
@@ -583,6 +587,50 @@
 @media screen and (max-width: 767px) {
   body {
     overflow-x: hidden;
+  }
+  .ay-info {
+    display: block;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+  }
+  .ay-message-open {
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+    padding-top: 15px;
+    background-color: black;
+  }
+  .ay-message-open.ay-message-active {
+    visibility: visible;
+    opacity: 1;
+  }
+  .ay-mobile-weve-sent-an-email {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 15px;
+    text-align: justify;
+    color: white;
+  }
+  .ay-close-btn {
+    background-color: rgba(255, 255, 255, 1.0);
+    font-family: "YellowPages Reg", "NettoWeb", Helvetica, Arial, serif;
+    color: rgba(73, 143, 225, 1.0);
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    border-width: 3px;
+    padding: 10px 15px 10px 15px;
+  }
+  .ay-info-icon {
+    background-image: url('../img/ay-info-icon.png');
+    float: right;
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: -38px;
   }
   .ay-search-clamp {
     margin: 0px;
