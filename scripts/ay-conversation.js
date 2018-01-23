@@ -163,7 +163,7 @@ var ayChatContainer = {
 
     var selectedDiv = $('#' + this.ayConversationId);
     if (typeof(selectedDiv) !== 'undefined' && selectedDiv.length > 0) {
-      $('#ayHistoryListView')[0].scrollTop = selectedDiv[0].offsetTop-80;
+      $('#ayHistoryListView')[0].scrollTop = selectedDiv[0].offsetTop-130;
     }
   },
 
