@@ -627,9 +627,16 @@
   .ay-info-icon {
     background-image: url('../img/ay-info-icon.png');
     float: right;
-    padding: 20px;
-    background-repeat: no-repeat;
-    background-position: center;
+    width: 21px;
+    height: 21px;
+    background-size: contain;
+  }
+  .ay-info-icon-container {
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    float: right;
+    padding: 10px;
     margin-top: -38px;
   }
   .ay-search-clamp {
