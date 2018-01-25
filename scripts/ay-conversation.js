@@ -336,7 +336,7 @@ var ayChatContainer = {
             this.ayCId = history.ayCId;
           }
 
-          $('#ayConversationHeader').text(this.ayConvHeader.replace('{BUSINESS_NAME}', history.customer.businessName));
+          $('#ayConversationHeader').text(this.ayConvHeader.replace('{BUSINESS_NAME}', this.ayIsConsumer ? history.customer.businessName : history.nickname));
           $('#ayTextArea').attr("placeholder", this.ayTextAreaPlaceHolder.replace('{BUSINESS_NAME}', this.ayIsConsumer ? history.customer.businessName : history.nickname));
 
           $('#ayFooterMsg').empty();
@@ -701,7 +701,7 @@ var ayChatContainer = {
   ayHistoryDiv: '<div id="{HISTORY_ID}" class="ay-conversation" onclick="ayChatContainer.ayOnClickViewMessage({CONVERSATION_ID})"> <div class="ay-details"> <div class="ay-name">{BUSINESS_NAME}</div><div class="ay-address">{BUSINESS_ADDRESS}</div></div>{RATINGS_PLACEHOLDER}<hr class="ay-header-separator"/> <div class="ay-message-stats"> Message started: <span class="ay-message-date">{START_DATE}</span></div><div class="ay-message-stats"> Last updated: <span class="ay-message-date">{LAST_UPDATED}</span></div><div class="ay-links"> <div class="ay-more-info"> <a href="{MORE_INFO_LINK}" target="_blank">More information</a> </div><div class="ay-view-send-message" onclick="ayChatContainer.ayOnClickViewMessage({CONVERSATION_ID})"> View / send message </div></div><div class="ay-conversation-bottom-clear"></div></div>',
   ayRatingsDiv: '<div class="ay-rating-stars"> <div class="ay-stars">{RATING_STARS}</div><div class="ay-reviews">{NO_OF_REVIEWS} reviews </div></div>',
   ayMessageDiv: '<li id="{MESSAGE_ID}" class="ay-bubble-row {CONTENT_TYPE}"> <div class="ay-icon"></div><div class="ay-bubble">{MESSAGE}</div></li><li class="ay-bubble-row-separator"></li>',
-  ayConvHeader: ' My messages with {BUSINESS_NAME} ',
+  ayConvHeader: 'My messages with {BUSINESS_NAME} ',
   ayTextAreaPlaceHolder: 'Tap here to message {BUSINESS_NAME}',
   ayFooterDiv: 'We’ve sent an email to you at {C_ID}. You can use the link in the email to get back to this conversation with {BUSINESS_NAME} at anytime.',
   ayLoadingDiv: '<div class="ay-loading"></div>',
