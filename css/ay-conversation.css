@@ -776,9 +776,11 @@
   }
   .ay-messages.ay-conversation-selected .ay-active-conversation {
     left: 0px;
+    width: 100%;
   }
   .ay-messages:not(.ay-conversation-selected) .ay-active-conversation {
     left: 100%;
+    width: 0px;
   }
   .ay-messages.ay-conversation-selected .ay-active-conversation .ay-my-message-history {
     display: block;
