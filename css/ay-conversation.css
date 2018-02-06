@@ -679,7 +679,7 @@
     width: 100%;
     max-width: 100%;
     min-width: unset;
-    margin-top: 7px;
+    /* margin-top: 7px; */
   }
   .ay-conversation-history .ay-sub-headers .ay-sub-header.ay-users-messages {
     font-size: 20px;
